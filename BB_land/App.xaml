@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="BB_land.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BB_land"
+    RequestedTheme="Light">
+
+</Application>
