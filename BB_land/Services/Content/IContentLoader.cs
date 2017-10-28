@@ -11,6 +11,5 @@ namespace BB_land.Services.Content
     {
         Texture2D LoadTexture(string textureName);
         SpriteFont LoadFont(string frontName);
-
     }
 }

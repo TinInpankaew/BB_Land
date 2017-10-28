@@ -25,10 +25,6 @@ namespace BB_land.Services.Content
             fontByName = new Dictionary<string, SpriteFont>();
         }
 
-        public ContentLoader()
-        {
-        }
-
         public Texture2D LoadTexture(string textureName)
         {
             if (!textureByName.ContainsKey(textureName))
@@ -66,4 +62,3 @@ namespace BB_land.Services.Content
         }
     }
 }
-

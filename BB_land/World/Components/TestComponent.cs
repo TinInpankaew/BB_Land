@@ -1,6 +1,6 @@
 ﻿using System;
-using BB_land.input;
-using BB_land.inputs;
+using BB_land.EventArg;
+using BB_land.Inputs;
 using BB_land.Services.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,9 +9,9 @@ namespace BB_land.World.Components
 {
     class TestComponent : Component
     {
-        private readonly Input input;
-        private Vector2 position;
         private Texture2D texture;
+        private Vector2 position;
+        private readonly Input input;
 
         public TestComponent(IComponentOwner owner) : base(owner)
         {
@@ -20,7 +20,7 @@ namespace BB_land.World.Components
             position = new Vector2(100, 100);
         }
 
-        private void OnNewInput(object sender, EventArg.NewInputEventArgs e)
+        private void OnNewInput(object sender, NewInputEventArgs e)
         {
             switch (e.Inputs)
             {
@@ -45,7 +45,7 @@ namespace BB_land.World.Components
 
         public override void LoadContent(IContentLoader contentLoader)
         {
-            texture = contentLoader.LoadTexture("NPC/main_character_single");
+            texture = contentLoader.LoadTexture("BB/main_character_single");
         }
 
         public override void Update(double gameTime)

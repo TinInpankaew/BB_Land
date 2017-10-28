@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BB_land.EventArg;
 
-namespace BB_land.input
+namespace BB_land.Inputs
 {
     internal abstract class Input
     {

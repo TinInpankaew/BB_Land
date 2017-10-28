@@ -1,4 +1,4 @@
-﻿using BB_land.input;
+﻿using BB_land.Inputs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 
-namespace BB_land.inputs
+namespace BB_land.Inputs
 {
     internal class InputKeyboard : Input
     {

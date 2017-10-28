@@ -1,5 +1,5 @@
 ﻿using System;
-using BB_land.inputs;
+using BB_land.Inputs;
 using BB_land.Services.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
