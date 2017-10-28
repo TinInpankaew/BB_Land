@@ -1,4 +1,5 @@
 ﻿using BB_land.Services.Content;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace BB_land.World
@@ -6,6 +7,7 @@ namespace BB_land.World
     internal abstract class Component
     {
         protected IComponentOwner Owner;
+
         public  bool Killed { get; protected set; }
 
         public Component(IComponentOwner owner)
@@ -14,7 +16,7 @@ namespace BB_land.World
         }
 
         public  virtual void LoadContent(IContentLoader contentLoader) {  }
-        public abstract void Update(double gameTime);
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public virtual void Update(double gameTime) { }
+        public virtual void Draw(SpriteBatch spriteBatch) { }
     }
 }

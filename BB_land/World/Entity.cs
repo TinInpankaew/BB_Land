@@ -28,7 +28,7 @@ namespace BB_land.World
             }
         }
 
-        public Component GetComponent<T>() where T : Component
+        public T GetComponent<T>() where T : Component
         {
             var component = components.FirstOrDefault(c => c.GetType() == typeof(T));
             return (T) component;

@@ -6,6 +6,14 @@
         Up,
         Right,
         Down,
-        None,
+        None
+    }
+
+    public enum Directions
+    {
+        Left,
+        Up,
+        Right,
+        Down
     }
 }

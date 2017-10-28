@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using BB_land.Data;
 using BB_land.World;
 using BB_land.World.Components;
+using BB_land.World.Components.Movements;
 
 
 namespace BB_land
@@ -28,12 +29,13 @@ namespace BB_land
             entity.AddComponent(new Sprite(entity, new SpriteData
             {
                 Color = Color.White,
-                Hight = 32,
-                Width = 32,
+                Hight = 19,
+                Width = 15,
                 TextureName = "BB/main_character_single",
                 XTilePosition = 2,
                 YTilePosition = 2,
             }));
+            entity.AddComponent(new MovementPlayer(entity, 1, new InputKeyboard()));
             Content.RootDirectory = "Content";
         }
 

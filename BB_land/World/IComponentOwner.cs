@@ -8,7 +8,7 @@ namespace BB_land.World
 {
     internal interface IComponentOwner
     {
-        string Id { get;  }
-        Component GetComponent<T>() where T: Component;
+        string Id { get; }
+        T GetComponent<T>() where T : Component;
     }
 }
