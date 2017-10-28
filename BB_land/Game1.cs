@@ -4,6 +4,7 @@ using BB_land.Services.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using BB_land.Data;
 using BB_land.World;
 using BB_land.World.Components;
 
@@ -24,7 +25,15 @@ namespace BB_land
         {
             graphics = new GraphicsDeviceManager(this);
             entity = new Entity("MyFirstEntity");
-            entity.AddComponent(new TestComponent(entity));
+            entity.AddComponent(new Sprite(entity, new SpriteData
+            {
+                Color = Color.White,
+                Hight = 32,
+                Width = 32,
+                TextureName = "BB/main_character_single",
+                XTilePosition = 2,
+                YTilePosition = 2,
+            }));
             Content.RootDirectory = "Content";
         }
 
