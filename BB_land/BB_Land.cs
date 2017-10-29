@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using BB_land.Data;
+using BB_land.Screens;
+using BB_land.Screens.ScreenTransitionEffects;
+using BB_land.Services.Screens;
 using BB_land.World;
 using BB_land.World.Components;
 using BB_land.World.Components.Animations;
@@ -16,29 +19,22 @@ namespace BB_land
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class BB_Land : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Entity entity;
         IContentLoader contentLoader;
+        private ScreenLoader screenLoader;
 
-        public Game1()
+        public BB_Land()
         {
             graphics = new GraphicsDeviceManager(this);
-            entity = new Entity("MyFirstEntity");
-            entity.AddComponent(new Sprite(entity, new SpriteData
-            {
-                Color = Color.White,
-                Hight = 19 * 3,
-                Width = 15 * 3,
-                TextureName = "BB/main_character",
-                XTilePosition = 2,
-                YTilePosition = 2
-            }, new Rectangle(0, 0, 16, 19)));
-            entity.AddComponent(new MovementPlayer(entity, 1, new InputKeyboard()));
-            entity.AddComponent(new Animation(entity));
             Content.RootDirectory = "Content";
+            contentLoader = new ContentLoader(Content);
+            screenLoader = new ScreenLoader(new ScreenTransitionEffectFadeOut(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 5),
+                new ScreenTransitionEffectFadeIn(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 3), contentLoader );
+            screenLoader.LoadScreen(new ScreenWorld(screenLoader));
         }
 
         /// <summary>
@@ -62,8 +58,7 @@ namespace BB_land
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            contentLoader = new ContentLoader(Content);
-            entity.LoadContent(contentLoader);
+            screenLoader.LoadContent();
         }
 
         /// <summary>
@@ -82,7 +77,7 @@ namespace BB_land
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            entity.Update(gameTime.ElapsedGameTime.Milliseconds);
+            screenLoader.Update(gameTime.ElapsedGameTime.Milliseconds);
             base.Update(gameTime);
         }
 
@@ -95,7 +90,7 @@ namespace BB_land
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            entity.Draw(spriteBatch);
+            screenLoader.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
