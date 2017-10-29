@@ -31,21 +31,21 @@ namespace BB_land.World
         public T GetComponent<T>() where T : Component
         {
             var component = components.FirstOrDefault(c => c.GetType() == typeof(T));
-            return (T) component;
+            return (T)component;
         }
 
         public void LoadContent(IContentLoader contentLoader)
         {
             foreach (var component in components)
             {
-                component.LoadContent(contentLoader);             
+                component.LoadContent(contentLoader);
             }
         }
 
         public void Update(double gameTime)
         {
-            int index = 0;
-            while ((index < components.Count))
+            var index = 0;
+            while (index < components.Count)
             {
                 if (components[index].Killed)
                 {
@@ -64,7 +64,6 @@ namespace BB_land.World
             foreach (var component in components)
             {
                 component.Draw(spriteBatch);
-
             }
         }
 

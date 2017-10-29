@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BB_land.Common;
 using BB_land.Services;
+using BB_land.World.Components.Animations;
 using BB_land.World.Tiles;
 using Microsoft.Xna.Framework;
 
@@ -15,11 +12,13 @@ namespace BB_land.World.Components.Movements
         private Vector2 wantedPosition;
         private readonly float speed;
         protected bool InMovement;
+        private readonly AnimationWalking animationWalking;
 
         public Movement(IComponentOwner owner, float speed) : base(owner)
         {
             this.speed = speed;
             InMovement = false;
+            animationWalking = new AnimationWalking(16, 19 ,2, Directions.Down);
         }
 
         protected void Move(Directions direction)
@@ -43,6 +42,9 @@ namespace BB_land.World.Components.Movements
                     throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
             }
             InMovement = true;
+            animationWalking.ChangeDirection(direction);
+            var animation = Owner.GetComponent<Animation>();
+            animation.PlayAnimation(animationWalking);
 
         }
 
@@ -80,6 +82,8 @@ namespace BB_land.World.Components.Movements
             sprite.UpdateTilePosition((int)(wantedPosition.X / Tile.Width), (int)(wantedPosition.Y / Tile.Hight));
             sprite.ResetPositionOffset();
             InMovement = false;
+            var animation = Owner.GetComponent<Animation>();
+            animation.StopAnimation();
         }
     }
 }

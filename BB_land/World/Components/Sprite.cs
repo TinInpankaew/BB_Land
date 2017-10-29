@@ -27,6 +27,11 @@ namespace BB_land.World.Components
             DrawFrame = new Rectangle(0, 0, spriteData.Width, spriteData.Hight);
         }
 
+        public Sprite(IComponentOwner owner, SpriteData spriteData, Rectangle drawFrame) : this(owner, spriteData)
+        {
+            DrawFrame = drawFrame;
+        }
+
         public override void LoadContent(IContentLoader contentLoader)
         {
             texture = contentLoader.LoadTexture(spriteData.TextureName);
@@ -60,5 +65,9 @@ namespace BB_land.World.Components
             spriteBatch.Draw(texture, new Rectangle((int)CurrentPosition.X, (int)CurrentPosition.Y, spriteData.Width, spriteData.Hight), DrawFrame, spriteData.Color);
         }
 
+        public void UpdateDrawFrame(Rectangle drawFrame)
+        {
+            DrawFrame = drawFrame;
+        }
     }
 }
