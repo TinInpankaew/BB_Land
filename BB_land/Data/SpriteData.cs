@@ -12,7 +12,7 @@ namespace BB_land.Data
         public int XTilePosition { get; set; }
         public int YTilePosition { get; set; }
         public int Width { get; set; }
-        public int Hight { get; set; }
+        public int Height { get; set; }
         public  string TextureName { get; set; }
         public Color Color { get; set; }
     }

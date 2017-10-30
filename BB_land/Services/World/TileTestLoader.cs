@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BB_land.World.Tiles;
 
-namespace BB_land.World.Tiles.Test
+namespace BB_land.Services.World
 {
-    public static class TileGenerator
+    internal class TileTestLoader : ITileLoader
     {
-        private static Random rnd = new Random();
+        private readonly Random rnd;
 
-        public static List<TileGraphic> GenerateTiles()
+        public TileTestLoader()
+        {
+            rnd = new Random();
+        }
+
+        public IList<TileGraphic> LoadGraphicTiles(string mapName)
         {
             var list = new List<TileGraphic>();
-
-                list.AddRange(GenerateGrass());
-                list.AddRange(GenerateBushes());
+            list.AddRange(GenerateGrass());
+            list.AddRange(GenerateBushes());
             return list;
         }
 
-        private static IEnumerable<TileGraphic> GenerateGrass()
+        private IEnumerable<TileGraphic> GenerateGrass()
         {
             var list = new List<TileGraphic>();
             for (int x = 0; x < 30; x++)
@@ -47,7 +49,7 @@ namespace BB_land.World.Tiles.Test
             return list;
         }
 
-        private static IEnumerable<TileGraphic> GenerateBushes()
+        private IEnumerable<TileGraphic> GenerateBushes()
         {
             var list = new List<TileGraphic>();
             for (int x = 0; x < 30; x++)

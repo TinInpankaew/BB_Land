@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BB_land.Services.Content;
+using BB_land.Services.World;
 using BB_land.World.Components;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace BB_land.World
 {
-    internal class Entity : IComponentOwner
+    internal class Entity : IComponentOwner , IWorldObject
     {
         private readonly IList<Component> components;
         public string Id { get; }
+        public int ZTilePosition => 2;
 
         public Entity(string id)
         {
@@ -33,6 +35,7 @@ namespace BB_land.World
             var component = components.FirstOrDefault(c => c.GetType() == typeof(T));
             return (T)component;
         }
+
 
         public void LoadContent(IContentLoader contentLoader)
         {

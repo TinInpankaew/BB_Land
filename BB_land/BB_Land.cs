@@ -8,6 +8,7 @@ using BB_land.Data;
 using BB_land.Screens;
 using BB_land.Screens.ScreenTransitionEffects;
 using BB_land.Services.Screens;
+using BB_land.Services.World;
 using BB_land.World;
 using BB_land.World.Components;
 using BB_land.World.Components.Animations;
@@ -38,7 +39,7 @@ namespace BB_land
             contentLoader = new ContentLoader(Content);
             screenLoader = new ScreenLoader(new ScreenTransitionEffectFadeOut(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 5),
                 new ScreenTransitionEffectFadeIn(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 3), contentLoader );
-            screenLoader.LoadScreen(new ScreenWorld(screenLoader));
+            screenLoader.LoadScreen(new ScreenWorld(screenLoader, new TileTestLoader(), new EntityTestLoader()));
         }
 
         /// <summary>

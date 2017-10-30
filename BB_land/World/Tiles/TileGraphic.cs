@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BB_land.Services.Content;
+using BB_land.Services.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace BB_land.World.Tiles
 {
-    public class TileGraphic : Tile
+    public class TileGraphic : Tile, IWorldObject
     {
         private const int TextureWidth = 16;
         private const int TextureHeight = 16;

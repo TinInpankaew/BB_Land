@@ -24,7 +24,7 @@ namespace BB_land.World.Components
         {
             this.spriteData = spriteData;
             PositionOffset = new Vector2(0, 0);
-            DrawFrame = new Rectangle(0, 0, spriteData.Width, spriteData.Hight);
+            DrawFrame = new Rectangle(0, 0, spriteData.Width, spriteData.Height);
         }
 
         public Sprite(IComponentOwner owner, SpriteData spriteData, Rectangle drawFrame) : this(owner, spriteData)
@@ -62,7 +62,7 @@ namespace BB_land.World.Components
         public override void Draw(SpriteBatch spriteBatch)
         {
             //32 will later change to a constant in the tile class
-            spriteBatch.Draw(texture, new Rectangle((int)CurrentPosition.X, (int)CurrentPosition.Y, spriteData.Width, spriteData.Hight), DrawFrame, spriteData.Color);
+            spriteBatch.Draw(texture, new Rectangle((int)CurrentPosition.X, (int)CurrentPosition.Y, spriteData.Width, spriteData.Height), DrawFrame, spriteData.Color);
         }
 
         public void UpdateDrawFrame(Rectangle drawFrame)

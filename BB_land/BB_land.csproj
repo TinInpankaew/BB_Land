@@ -121,6 +121,11 @@
     <Compile Include="Services\Screens\IScreenLoader.cs" />
     <Compile Include="Services\Screens\ScreenLoader.cs" />
     <Compile Include="Services\UtilityService.cs" />
+    <Compile Include="Services\World\EntityTestLoader.cs" />
+    <Compile Include="Services\World\IEntityLoader.cs" />
+    <Compile Include="Services\World\ITileLoader.cs" />
+    <Compile Include="Services\World\IWorldObject.cs" />
+    <Compile Include="Services\World\TileTestLoader.cs" />
     <Compile Include="World\Component.cs" />
     <Compile Include="World\Components\Animations\Animation.cs" />
     <Compile Include="World\Components\Animations\AnimationWalking.cs" />
@@ -130,7 +135,6 @@
     <Compile Include="World\Components\Sprite.cs" />
     <Compile Include="World\Entity.cs" />
     <Compile Include="World\IComponentOwner.cs" />
-    <Compile Include="World\Tiles\Test\TileGenerator.cs" />
     <Compile Include="World\Tiles\Tile.cs" />
     <Compile Include="World\Tiles\TileFrame.cs" />
     <Compile Include="World\Tiles\TileGraphic.cs" />
