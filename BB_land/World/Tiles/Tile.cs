@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace BB_land.World.Tiles
 {
-    internal class Tile
+    public abstract class Tile
     {
         public const int Width = 16;
         public const int Hight = 16;
 
+        public int XTilePosition { get; set; }
+        public int YTilePosition { get; set; }
     }
 }

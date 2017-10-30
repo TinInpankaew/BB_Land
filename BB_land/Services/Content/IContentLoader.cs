@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BB_land.Services.Content
 {
-    internal interface IContentLoader
+    public interface IContentLoader
     {
         Texture2D LoadTexture(string textureName);
         SpriteFont LoadFont(string frontName);

@@ -27,9 +27,12 @@ namespace BB_land
         IContentLoader contentLoader;
         private ScreenLoader screenLoader;
 
+
         public BB_Land()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 240;
+            graphics.PreferredBackBufferHeight = 160;
             Content.RootDirectory = "Content";
             contentLoader = new ContentLoader(Content);
             screenLoader = new ScreenLoader(new ScreenTransitionEffectFadeOut(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 5),
