@@ -21,6 +21,7 @@ namespace BB_land
     /// </summary>
     public class BB_Land : Game
     {
+        RenderTarget2D backBuffer;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Entity entity;
@@ -59,6 +60,7 @@ namespace BB_land
         /// </summary>
         protected override void LoadContent()
         {
+            backBuffer = new RenderTarget2D(GraphicsDevice, 240, 160);
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             screenLoader.LoadContent();
@@ -84,16 +86,29 @@ namespace BB_land
             base.Update(gameTime);
         }
 
+        protected override bool BeginDraw()
+        {
+
+            GraphicsDevice.SetRenderTarget(backBuffer);
+            GraphicsDevice.Clear(Color.Black);
+
+            spriteBatch.Begin();
+            screenLoader.Draw(spriteBatch);
+            spriteBatch.End();
+
+            return base.BeginDraw();
+        }
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.SetRenderTarget(null);
             GraphicsDevice.Clear(Color.Black);
-
             spriteBatch.Begin();
-            screenLoader.Draw(spriteBatch);
+            spriteBatch.Draw(backBuffer, new Rectangle(0, 0, GraphicsDevice.Viewport.Bounds.Width, GraphicsDevice.Viewport.Bounds.Height), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
