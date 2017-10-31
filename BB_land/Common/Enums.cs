@@ -6,6 +6,7 @@
         Up,
         Right,
         Down,
+        Z,
         None
     }
 
@@ -14,6 +15,7 @@
         Left,
         Up,
         Right,
-        Down
+        Down,
+        Z
     }
 }

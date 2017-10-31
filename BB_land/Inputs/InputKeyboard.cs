@@ -27,6 +27,7 @@ namespace BB_land.Inputs
             CheckKeyState(Keys.Up, Common.Inputs.Up);
             CheckKeyState(Keys.Right, Common.Inputs.Right);
             CheckKeyState(Keys.Down, Common.Inputs.Down);
+            CheckKeyState(Keys.Z, Common.Inputs.Z);
 
             LasKeyboardState = keyboardState;
 

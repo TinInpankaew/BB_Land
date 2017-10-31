@@ -32,6 +32,28 @@ namespace BB_land.Services.World
         {
             return collisionObjects;
         }
+        public IEnumerable<TileGraphic> GenarateRabert(int x, int y)
+        {
+            var list = new List<TileGraphic>();
+            list.Add(new TileGraphic
+            {
+                AnimationSpeed = 1000,
+                TextureName = "Pokeball/pokeball_1",
+                TileFrames = new List<TileFrame>
+                {
+                    new TileFrame
+                    {
+                        TextureXPosition = 16,
+                        TextureYPosition = 0
+                    }
+                },
+                XTilePosition = x,
+                YTilePosition = y,
+                ZTilePosition = 0
+            });
+            
+            return list;
+        }
 
         private IEnumerable<TileGraphic> GenerateGrass()
         {

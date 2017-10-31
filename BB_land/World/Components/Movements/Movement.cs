@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using BB_land.Common;
 using BB_land.Services;
+using BB_land.Services.World;
 using BB_land.World.Components.Animations;
 using BB_land.World.Tiles;
 using Microsoft.Xna.Framework;
@@ -12,7 +14,9 @@ namespace BB_land.World.Components.Movements
         private Vector2 wantedPosition;
         private readonly float speed;
         protected bool InMovement;
+        TileTestLoader x = new TileTestLoader();
         private readonly AnimationWalking animationWalking;
+        
 
         public Movement(IComponentOwner owner, float speed) : base(owner)
         {
@@ -20,7 +24,7 @@ namespace BB_land.World.Components.Movements
             InMovement = false;
             animationWalking = new AnimationWalking(16, 19 ,2, Directions.Down);
         }
-
+        
         protected void Move(Directions direction)
         {
             var sprite = Owner.GetComponent<Sprite>();
@@ -40,6 +44,9 @@ namespace BB_land.World.Components.Movements
                 case Directions.Down:
                     wantedYTilePostion++;
                     break;
+                case Directions.Z:
+                    x.GenarateRabert(wantedXTilePosition, wantedYTilePostion);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
             }
@@ -50,6 +57,9 @@ namespace BB_land.World.Components.Movements
             animationWalking.ChangeDirection(direction);
             Owner.GetComponent<Animation>().PlayAnimation(animationWalking);
         }
+
+
+
 
         private bool Collision(int wantedXTilePosition, int wantedYTilePosition)
         {

@@ -1,14 +1,15 @@
 ﻿using System;
+using Windows.ApplicationModel.Activation;
 using BB_land.Common;
 using BB_land.EventArg;
 using BB_land.Inputs;
+using BB_land.Pokeboom;
 
 namespace BB_land.World.Components.Movements
 {
-    internal class MovementPlayer : Movement
+    internal class MovementPlayer : Movement 
     {
         private readonly Input input;
-
         public MovementPlayer(IComponentOwner owner, float speed, Input input) : base(owner, speed)
         {
             this.input = input;
@@ -34,6 +35,9 @@ namespace BB_land.World.Components.Movements
                     Move(Directions.Down);
                     break;
                 case Common.Inputs.None:
+                    break;
+                case Common.Inputs.Z: 
+                    Move(Directions.Z);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
