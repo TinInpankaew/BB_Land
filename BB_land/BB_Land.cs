@@ -34,7 +34,7 @@ namespace BB_land
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 240;
-            graphics.PreferredBackBufferHeight = 160;
+            graphics.PreferredBackBufferHeight = 240;
             Content.RootDirectory = "Content";
             contentLoader = new ContentLoader(Content);
             screenLoader = new ScreenLoader(new ScreenTransitionEffectFadeOut(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 5),
@@ -61,7 +61,7 @@ namespace BB_land
         /// </summary>
         protected override void LoadContent()
         {
-            backBuffer = new RenderTarget2D(GraphicsDevice, 240, 160);
+            backBuffer = new RenderTarget2D(GraphicsDevice, 240, 240);
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             screenLoader.LoadContent();

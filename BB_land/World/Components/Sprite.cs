@@ -18,7 +18,7 @@ namespace BB_land.World.Components
         public Rectangle DrawFrame { get; set; }
         public Vector2 PositionOffset { get; private set; }
         public Vector2 TilePosition => new Vector2(spriteData.XTilePosition, spriteData.YTilePosition); 
-        public  Vector2 CurrentPosition => new Vector2(spriteData.XTilePosition*Tile.Width + PositionOffset.X, spriteData.YTilePosition*Tile.Hight + PositionOffset.Y);
+        public  Vector2 CurrentPosition => new Vector2(spriteData.XTilePosition*Tile.Width + PositionOffset.X, spriteData.YTilePosition*Tile.Height + PositionOffset.Y);
 
         public Sprite(IComponentOwner owner, SpriteData spriteData) : base(owner)
         {

@@ -24,28 +24,37 @@ namespace BB_land.World.Components.Movements
         protected void Move(Directions direction)
         {
             var sprite = Owner.GetComponent<Sprite>();
+            var wantedXTilePosition = (int)sprite.TilePosition.X;
+            var wantedYTilePostion = (int)sprite.TilePosition.Y;
             switch (direction)
             {
                 case Directions.Left:
-                    wantedPosition = new Vector2(sprite.TilePosition.X*Tile.Width - Tile.Width, sprite.TilePosition.Y*Tile.Hight);
+                    wantedXTilePosition--;
                     break;
                 case Directions.Up:
-                    wantedPosition = new Vector2(sprite.TilePosition.X * Tile.Width, sprite.TilePosition.Y*Tile.Hight - Tile.Hight);
+                    wantedYTilePostion--;
                     break;
                 case Directions.Right:
-                    wantedPosition = new Vector2(sprite.TilePosition.X * Tile.Width + Tile.Width, sprite.TilePosition.Y*Tile.Hight);
+                    wantedXTilePosition++;
                     break;
                 case Directions.Down:
-                    wantedPosition = new Vector2(sprite.TilePosition.X * Tile.Width, sprite.TilePosition.Y*Tile.Hight + Tile.Hight);
+                    wantedYTilePostion++;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
             }
+            if (Collision(wantedXTilePosition, wantedYTilePostion))
+                return;
+            wantedPosition = new Vector2(wantedXTilePosition * Tile.Width, wantedYTilePostion * Tile.Height);
             InMovement = true;
             animationWalking.ChangeDirection(direction);
-            var animation = Owner.GetComponent<Animation>();
-            animation.PlayAnimation(animationWalking);
+            Owner.GetComponent<Animation>().PlayAnimation(animationWalking);
+        }
 
+        private bool Collision(int wantedXTilePosition, int wantedYTilePosition)
+        {
+            var collision = Owner.GetComponent<Collision>();
+            return collision != null && collision.CollideOnTile(wantedXTilePosition, wantedYTilePosition);
         }
 
         public override void Update(double gameTime)
@@ -79,7 +88,7 @@ namespace BB_land.World.Components.Movements
         private void FinishMovement()
         {
             var sprite = Owner.GetComponent<Sprite>();
-            sprite.UpdateTilePosition((int)(wantedPosition.X / Tile.Width), (int)(wantedPosition.Y / Tile.Hight));
+            sprite.UpdateTilePosition((int)(wantedPosition.X / Tile.Width), (int)(wantedPosition.Y / Tile.Height));
             sprite.ResetPositionOffset();
             InMovement = false;
             var animation = Owner.GetComponent<Animation>();

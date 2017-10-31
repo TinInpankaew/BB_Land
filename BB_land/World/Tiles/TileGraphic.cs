@@ -54,7 +54,7 @@ namespace BB_land.World.Tiles
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, new Rectangle(XTilePosition * Width, YTilePosition * Hight, Width, Hight),
+            spriteBatch.Draw(texture, new Rectangle(XTilePosition * Width, YTilePosition * Height, Width, Height),
                 new Rectangle(TileFrames[animationIndex].TextureXPosition, TileFrames[animationIndex].TextureYPosition, TextureWidth, TextureHeight), Color.White);
         }
 

@@ -9,7 +9,7 @@ namespace BB_land.World.Tiles
     public abstract class Tile
     {
         public const int Width = 16;
-        public const int Hight = 16;
+        public const int Height = 16;
 
         public int XTilePosition { get; set; }
         public int YTilePosition { get; set; }

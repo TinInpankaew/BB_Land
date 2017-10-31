@@ -109,6 +109,8 @@
     <Compile Include="BB_Land.cs" />
     <Compile Include="Inputs\Input.cs" />
     <Compile Include="Inputs\InputKeyboard.cs" />
+    <Compile Include="Pokeboom\Boom.cs" />
+    <Compile Include="Pokeboom\IBoom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\Screen.cs" />
     <Compile Include="Screens\ScreenTransitionEffects\IScreenTransitionEffect.cs" />
@@ -130,12 +132,15 @@
     <Compile Include="World\Components\Animations\Animation.cs" />
     <Compile Include="World\Components\Animations\AnimationWalking.cs" />
     <Compile Include="World\Components\Animations\IAnimation.cs" />
+    <Compile Include="World\Components\Collision.cs" />
     <Compile Include="World\Components\Movements\Movement.cs" />
     <Compile Include="World\Components\Movements\MovementPlayer.cs" />
     <Compile Include="World\Components\Sprite.cs" />
     <Compile Include="World\Entity.cs" />
+    <Compile Include="World\ICollisionObject.cs" />
     <Compile Include="World\IComponentOwner.cs" />
     <Compile Include="World\Tiles\Tile.cs" />
+    <Compile Include="World\Tiles\TileCollison.cs" />
     <Compile Include="World\Tiles\TileFrame.cs" />
     <Compile Include="World\Tiles\TileGraphic.cs" />
   </ItemGroup>

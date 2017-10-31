@@ -32,8 +32,8 @@ namespace BB_land
 			// Create the game.
 			var launchArguments = string.Empty;
             _game = MonoGame.Framework.XamlGame<BB_Land>.Create(launchArguments, Window.Current.CoreWindow, swapChainPanel);
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(240, 160));
-            ApplicationView.PreferredLaunchViewSize = new Size(240, 160);
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(240, 240));
+            ApplicationView.PreferredLaunchViewSize = new Size(240, 240);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
 
 
