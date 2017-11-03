@@ -1,10 +1,7 @@
-﻿using System;
-using Windows.ApplicationModel.Activation;
-using BB_land.Common;
+﻿using BB_land.Common;
 using BB_land.EventArg;
 using BB_land.Inputs;
-using BB_land.Pokeboom;
-
+using System;
 namespace BB_land.World.Components.Movements
 {
     internal class MovementPlayer : Movement 
@@ -37,7 +34,6 @@ namespace BB_land.World.Components.Movements
                 case Common.Inputs.None:
                     break;
                 case Common.Inputs.Z: 
-                    Move(Directions.Z);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

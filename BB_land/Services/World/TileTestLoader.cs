@@ -9,10 +9,11 @@ namespace BB_land.Services.World
     {
         private readonly Random rnd;
         private readonly List<ICollisionObject> collisionObjects;
-    //    private int[][] ArrayOfBlock;
-        
+        public int[,] results = new int[15,15];
+        //    private int[][] ArrayOfBlock;
 
-   //     public int[][] ArrOfBlock1 { get => ArrOfBlock; set => ArrOfBlock = value; }
+
+        //     public int[][] ArrOfBlock1 { get => ArrOfBlock; set => ArrOfBlock = value; }
 
         public TileTestLoader()
         {
@@ -32,28 +33,7 @@ namespace BB_land.Services.World
         {
             return collisionObjects;
         }
-        public IEnumerable<TileGraphic> GenarateRabert(int x, int y)
-        {
-            var list = new List<TileGraphic>();
-            list.Add(new TileGraphic
-            {
-                AnimationSpeed = 1000,
-                TextureName = "Pokeball/pokeball_1",
-                TileFrames = new List<TileFrame>
-                {
-                    new TileFrame
-                    {
-                        TextureXPosition = 16,
-                        TextureYPosition = 0
-                    }
-                },
-                XTilePosition = x,
-                YTilePosition = y,
-                ZTilePosition = 0
-            });
-            
-            return list;
-        }
+       
 
         private IEnumerable<TileGraphic> GenerateGrass()
         {
@@ -86,11 +66,13 @@ namespace BB_land.Services.World
         private IEnumerable<TileGraphic> GenerateBushes()
         {
             var list = new List<TileGraphic>();
+            
             for (int x = 0; x < 15; x++)
             {
                 for (int y = 0; y < 15; y++)
                 {
                     var type = rnd.Next(0, 3);
+                    //ฟังก์ชั่นแอดขอบ
                     if (x == 0 || x == 14 || y == 0 || y == 14)
                     {
                         collisionObjects.Add(new TileCollison{XTilePosition = x, YTilePosition = y});
@@ -110,7 +92,9 @@ namespace BB_land.Services.World
                             YTilePosition = y,
                             ZTilePosition = 0
                         });
-        //                this.ArrOfBlock1[x][y] = 0;
+                        results[x, y] = 1;
+                        //                this.ArrOfBlock1[x][y] = 0;
+                        //ฟังก์ชั่นแอดต้นไม้ข้างใน
                     }else if ((x % 2) == 0 && (y % 2) == 0)
                     {
                         collisionObjects.Add(new TileCollison { XTilePosition = x, YTilePosition = y });
@@ -130,7 +114,8 @@ namespace BB_land.Services.World
                             YTilePosition = y,
                             ZTilePosition = 0
                         });
-          //              this.ArrOfBlock1[x][y] = 0;                    
+                        results[x, y] = 1;
+                        //              this.ArrOfBlock1[x][y] = 0;                    
                     }else if (((3 <= x && x <= 11) || (3 <= y && y <= 11)) && type<=1)
                     {
                         collisionObjects.Add(new TileCollison { XTilePosition = x, YTilePosition = y });
@@ -162,17 +147,19 @@ namespace BB_land.Services.World
                                 }
 
                             },
+
                             XTilePosition = x,
                             YTilePosition = y,
                             ZTilePosition = 0
                         });
+                        results[x, y] = 0;
                     }
                     
                 }
             }
-
             return list;
         }
+
     }
 }
 

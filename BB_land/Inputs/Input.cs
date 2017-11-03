@@ -9,14 +9,15 @@ namespace BB_land.Inputs
 {
     internal abstract class Input
     {
+        public static bool LockInput { get; set; }
         private event EventHandler<NewInputEventArgs> newInput;
         private double counter;
         private double cooldown;
 
         public event EventHandler<NewInputEventArgs> NewInput
         {
-            add { newInput += value;  }
-            remove { newInput -= value;  }
+            add { newInput += value; }
+            remove { newInput -= value; }
         }
 
         protected Input()
@@ -27,6 +28,8 @@ namespace BB_land.Inputs
 
         public void Update(double gameTime)
         {
+            if (LockInput)
+                return;
             if (cooldown > 0)
             {
                 counter += gameTime;

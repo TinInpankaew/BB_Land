@@ -10,6 +10,7 @@ using BB_land.Screens.ScreenTransitionEffects;
 using BB_land.Services.Screens;
 using BB_land.Services.World;
 using BB_land.World;
+using BB_land.World.Boom;
 using BB_land.World.Components;
 using BB_land.World.Components.Animations;
 using BB_land.World.Components.Movements;
@@ -27,19 +28,21 @@ namespace BB_land
         SpriteBatch spriteBatch;
         Entity entity;
         IContentLoader contentLoader;
-        private ScreenLoader screenLoader;
+        ScreenLoader screenLoader;
+
+
 
 
         public BB_Land()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 240;
-            graphics.PreferredBackBufferHeight = 240;
+            graphics.PreferredBackBufferHeight = 160;
             Content.RootDirectory = "Content";
             contentLoader = new ContentLoader(Content);
             screenLoader = new ScreenLoader(new ScreenTransitionEffectFadeOut(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 5),
-                new ScreenTransitionEffectFadeIn(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 3), contentLoader );
-            screenLoader.LoadScreen(new ScreenWorld(screenLoader, new TileTestLoader(), new EntityTestLoader()));
+                new ScreenTransitionEffectFadeIn(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 3), contentLoader);
+            screenLoader.LoadScreen(new ScreenWorld(screenLoader, new TileTestLoader(), new EntityTestLoader(), new EventRunner(contentLoader)));
         }
 
         /// <summary>
@@ -89,7 +92,6 @@ namespace BB_land
 
         protected override bool BeginDraw()
         {
-
             GraphicsDevice.SetRenderTarget(backBuffer);
             GraphicsDevice.Clear(Color.Black);
 
